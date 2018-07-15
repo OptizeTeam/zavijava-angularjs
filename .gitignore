@@ -1,0 +1,6 @@
+**/.idea/
+**/.vscode/
+**/node_modules/
+/sources/app/config/*
+!/sources/app/config/*.sample.*
+/www/

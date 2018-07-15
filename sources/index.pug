@@ -1,0 +1,21 @@
+- var DATE = +new Date()
+- var VERSION = `?v=${DATE}`
+
+doctype html
+html(lang='pl' ng-app='app' ng-controller='mainCtrl as main')
+	head
+		title(ng-bind='main.title') Zavijava
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		base(href='/')
+		link(rel='stylesheet' href=`assets/styles.css${VERSION}`)
+		script(src=`assets/scripts.js${VERSION}`)
+	body
+		nav#sidebar(ng-controller='sidebarCtrl as sidebar')
+			h1(ng-bind='main.APP_NAME')
+			ul
+				li(ng-repeat='item in sidebar.menu' ng-class='{active: sidebar.amIOnThisPath(item.url)}')
+					a(href='{{ item.url }}' ng-bind='item.name')
+		nav#topbar
+			h1(ng-bind='main.currentPage') &nbsp;
+		div#content(ng-view='')

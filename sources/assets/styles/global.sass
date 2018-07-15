@@ -1,0 +1,64 @@
+@import partials/variables
+@import partials/vendors
+@import partials/fonts
+
+*,
+*:hover,
+*:focus,
+*:active
+	outline: none
+
+body
+	background-color: $pageBackground
+	color: $textColor
+	+lato-font('normal')
+
+a
+	color: $textColor
+	text-decoration: none
+
+$h1FontSize: 2rem
+
+h1
+	font-size: $h1FontSize
+	+lato-font('black')
+
+p
+	margin-bottom: 20px
+
+$sidebarWidth: 240px
+$contentPadding: 20px
+
+#sidebar,
+#topbar
+	position: fixed
+	top: 0
+	box-sizing: border-box
+	padding: $contentPadding
+	background-color: $pageBackground
+	+dropShadow
+
+#sidebar
+	left: 0
+	z-index: 2
+	width: $sidebarWidth
+	height: 100%
+
+	h1
+		margin-bottom: 20px
+
+	li
+		padding: 10px 0
+
+		&.active a
+			text-decoration: underline
+
+#topbar
+	left: $sidebarWidth
+	z-index: 1
+	width: 100%
+
+#content
+	margin-left: $sidebarWidth
+	margin-top: calc(#{$contentPadding} * 2 + #{$h1FontSize})
+	padding: $contentPadding

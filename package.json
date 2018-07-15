@@ -1,0 +1,38 @@
+{
+  "name": "zavijava-angularjs",
+  "version": "1.0.0",
+  "description": "To-do list",
+  "keywords": [
+    "optize",
+    "todo"
+  ],
+  "homepage": "https://github.com/OptizeTeam/zavijava-docs",
+  "bugs": {
+    "url": "https://github.com/OptizeTeam/zavijava-angularjs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OptizeTeam/zavijava-angularjs.git"
+  },
+  "license": "ISC",
+  "author": "Optize sp. z o.o.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "angular": "^1.7.2",
+    "angular-route": "^1.7.2",
+    "font-awesome": "^4.7.0",
+    "grunt": "^1.0.3",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-sass": "^3.0.1",
+    "lato-font": "^3.0.0",
+    "node-sass": "^4.9.2",
+    "normalize.css": "^8.0.0",
+    "reset-css": "^4.0.1",
+    "sweetalert2": "^7.25.0"
+  }
+}
