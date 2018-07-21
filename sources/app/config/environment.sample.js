@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-	debug: true
+	debug: true,
+	version: +new Date()
 };

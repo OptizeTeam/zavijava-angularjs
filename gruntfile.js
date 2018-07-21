@@ -34,7 +34,10 @@ const pugPretty = environment.debug,
 	pugTasks = {
 		index: {
 			options: {
-				pretty: pugPretty
+				pretty: pugPretty,
+				data: {
+					version: environment.version
+				}
 			},
 			src: 'sources/index.pug',
 			dest: 'www/index.html'
@@ -63,6 +66,7 @@ const pugPretty = environment.debug,
 				[jsAssetsFilePath]: [
 					'node_modules/angular/angular.js',
 					'node_modules/angular-route/angular-route.js',
+					'node_modules/ngstorage/ngStorage.js',
 					'node_modules/sweetalert2/dist/sweetalert2.js',
 					'sources/app/config/angular.js',
 					'sources/app/app.js'
@@ -101,7 +105,13 @@ function capitalizeFirstLetter(string) {
  * Create grunt tasks for pug depending on created bundles
  */
 fs.readdirSync('sources/app/bundles').forEach(bundle => {
-	const bundleCapitalized = capitalizeFirstLetter(bundle);
+	const bundleCapitalized = capitalizeFirstLetter(bundle),
+		bundleDirectory = `sources/app/bundles/${bundle}`,
+		modulesDirectories = [
+			`${bundleDirectory}/factories`,
+			`${bundleDirectory}/providers`,
+			`${bundleDirectory}/controllers`
+		];
 
 	pugTasks[`bundle${bundleCapitalized}`] = {
 		options: {
@@ -128,8 +138,12 @@ fs.readdirSync('sources/app/bundles').forEach(bundle => {
 		]
 	};
 
-	fs.readdirSync(`sources/app/bundles/${bundle}/controllers/`).forEach(controller => {
-		uglifyTasks.global.files[jsAssetsFilePath].push(`sources/app/bundles/${bundle}/controllers/${controller}`);
+	modulesDirectories.forEach(modulesDirectory => {
+		if (fs.existsSync(modulesDirectory)) {
+			fs.readdirSync(modulesDirectory).forEach(module => {
+				uglifyTasks.global.files[jsAssetsFilePath].push(`${modulesDirectory}/${module}`);
+			});
+		}
 	});
 });
 
