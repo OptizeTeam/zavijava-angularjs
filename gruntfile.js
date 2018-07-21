@@ -34,7 +34,10 @@ const pugPretty = environment.debug,
 	pugTasks = {
 		index: {
 			options: {
-				pretty: pugPretty
+				pretty: pugPretty,
+				data: {
+					version: environment.version
+				}
 			},
 			src: 'sources/index.pug',
 			dest: 'www/index.html'
