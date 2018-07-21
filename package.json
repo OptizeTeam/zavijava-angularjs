@@ -30,6 +30,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-sass": "^3.0.1",
     "lato-font": "^3.0.0",
+    "ngstorage": "^0.3.11",
     "node-sass": "^4.9.2",
     "normalize.css": "^8.0.0",
     "reset-css": "^4.0.1",

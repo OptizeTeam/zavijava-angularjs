@@ -4,11 +4,17 @@ const app = angular.module('app.controllers', []);
 
 angular.module('app', [
 	'ngRoute',
+	'ngStorage',
+
+	'notifyFactory',
+	'ajaxProvider',
 
 	'app.config',
 	'app.controllers'
-]).config(['$locationProvider', '$routeProvider', 'config', ($locationProvider, $routeProvider, config) => {
+]).config(['$compileProvider', '$locationProvider', '$routeProvider', 'ajaxProvider', 'config', ($compileProvider, $locationProvider, $routeProvider, ajaxProvider, config) => {
 	const VERSION = '?v=' + config.version;
+
+	$compileProvider.debugInfoEnabled(config.debug);
 
 	$locationProvider.html5Mode(true);
 
@@ -61,4 +67,6 @@ angular.module('app', [
 		title: 'Ta strona nie istnieje',
 		requireLogin: false
 	});
+
+	ajaxProvider.api = config.api;
 }]).constant('APP_NAME', 'Zavijava');
